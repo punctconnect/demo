@@ -3,9 +3,14 @@
 import React from 'react';
 import Head from 'next/head';
 import { Container, Typography, Button, Grid, Card, CardContent } from '@material-ui/core';
+import Layout from '../layouts/layout';
+import '../styles/globals.css';
 
-const AppPage = () => {
-  return (
+const AppPage = ({ Component, pageProps }) => {
+  // Use the layout defined at the page level, if available
+  const getLayout = Component.getLayout || ((page) => page)
+
+  return getLayout(
     <Container>
       <Head>
         <title>PunctConnect - Your Coupon and Discount Hub</title>
@@ -13,34 +18,7 @@ const AppPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <Grid container spacing={3} justify="center" alignItems="center" style={{ minHeight: '80vh' }}>
-          <Grid item xs={12} md={6}>
-            <Typography variant="h2" component="h1" gutterBottom>
-              Welcome to PunctConnect
-            </Typography>
-            <Typography variant="h5" color="textSecondary" paragraph>
-              Your personalized coupon and discount hub. Start saving today!
-            </Typography>
-            <Button variant="contained" color="primary" size="large">
-              Explore Deals
-            </Button>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Card>
-              <CardContent>
-                <Typography variant="h6" component="h2" gutterBottom>
-                  Featured Coupons
-                </Typography>
-                {/* Add your featured coupons or deals here */}
-                <Typography color="textSecondary" paragraph>
-                  Check out these exclusive offers from our partners.
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
-      </main>
+      <Component {...pageProps} />
 
       <footer>
         <Typography variant="body2" color="textSecondary" align="center">
