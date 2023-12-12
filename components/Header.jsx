@@ -17,12 +17,11 @@ import { useRouter } from "next/router";
 import { Home, TableBarOutlined, TableChartTwoTone } from "@mui/icons-material";
 
 const pages = [
-  {
-    id: '0',
-    title: 'Boards',
-    path: '/boards'
-  },
-
+  // {
+  //   id: '0',
+  //   title: 'Deals',
+  //   path: '/deals'
+  // },
 ];
 
 export default function Header() {

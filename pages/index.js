@@ -1,11 +1,19 @@
 import React from 'react';
 import { Container, Typography, Button, Grid, Card, CardContent } from '@material-ui/core';
 import Headerless from '../layouts/headerless';
+import { useRouter } from 'next/router';
 
 export default function HomePage() {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push('/form')
+  }
+
+
   return (
     <Container>
-      <Grid container spacing={3} justify="center" alignItems="center" style={{ minHeight: '80vh' }}>
+      <Grid container spacing={3} justifyContent="center" alignItems="center" style={{ minHeight: '80vh' }}>
         <Grid item xs={12} md={6}>
           <Typography variant="h2" component="h1" gutterBottom>
             Welcome to PunctConnect
@@ -27,6 +35,22 @@ export default function HomePage() {
               <Typography color="textSecondary" paragraph>
                 Check out these exclusive offers from our partners.
               </Typography>
+            </CardContent>
+          </Card>
+
+          <br />
+
+
+          {/* subscribe to newsletter */}
+          <Card>
+            <CardContent>
+              <Typography variant="h6" component="h2" gutterBottom>
+                Subscribe to our newsletter
+              </Typography>
+              <Typography color="textSecondary" paragraph>
+                Stay up to date with the latest deals and coupons.
+              </Typography>
+              <Button variant="contained" onClick={handleClick}>Subscribe</Button>
             </CardContent>
           </Card>
         </Grid>
