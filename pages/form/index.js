@@ -3,18 +3,21 @@ import { useForm, ValidationError } from '@formspree/react';
 import { TextField, Button, Box, Typography, Container } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import Layout from '../../layouts/layout';
+import { usePostHog } from 'posthog-js/react';
 
 export default function Form() {
     const router = useRouter();
     const [state, handleSubmit] = useForm("mvojengb");
-
+    const posthog = usePostHog();
     const handleFormSubmit = (event) => {
+        posthog.capture('newsletter-subscribe-attempt');
         event.preventDefault();
         handleSubmit(event);
     };
 
     useEffect(() => {
         if (state.succeeded) {
+            posthog.capture('newsletter-subscribe-success');
             alert("Thanks for subscribing!");
             router.push('/');
         }

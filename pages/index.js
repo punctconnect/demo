@@ -1,19 +1,37 @@
-import React from 'react';
-import { Container, Typography, Button, Grid, Card, CardContent } from '@material-ui/core';
-import Headerless from '../layouts/headerless';
-import { useRouter } from 'next/router';
+import {
+  Button,
+  Card,
+  CardContent,
+  Container,
+  Grid,
+  Typography,
+} from "@material-ui/core";
+import { useRouter } from "next/router";
+import { usePostHog } from "posthog-js/react";
+import React from "react";
+import Headerless from "../layouts/headerless";
 
 export default function HomePage() {
   const router = useRouter();
-
+  const posthog = usePostHog();
   const handleClick = () => {
-    router.push('/form')
-  }
+    posthog.capture("click-newsletter-subscribe-btn");
+    router.push("/form");
+  };
 
+  const handleExploreDealsClick = () => {
+    posthog.capture("click-explore-deals-btn");
+  };
 
   return (
     <Container>
-      <Grid container spacing={3} justifyContent="center" alignItems="center" style={{ minHeight: '80vh' }}>
+      <Grid
+        container
+        spacing={3}
+        justifyContent="center"
+        alignItems="center"
+        style={{ minHeight: "80vh" }}
+      >
         <Grid item xs={12} md={6}>
           <Typography variant="h2" component="h1" gutterBottom>
             Welcome to PunctConnect
@@ -21,7 +39,12 @@ export default function HomePage() {
           <Typography variant="h5" color="textSecondary" paragraph>
             Your personalized coupon and discount hub. Start saving today!
           </Typography>
-          <Button variant="contained" color="primary" size="large">
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            onClick={handleExploreDealsClick}
+          >
             Explore Deals
           </Button>
         </Grid>
@@ -40,7 +63,6 @@ export default function HomePage() {
 
           <br />
 
-
           {/* subscribe to newsletter */}
           <Card>
             <CardContent>
@@ -50,7 +72,9 @@ export default function HomePage() {
               <Typography color="textSecondary" paragraph>
                 Stay up to date with the latest deals and coupons.
               </Typography>
-              <Button variant="contained" onClick={handleClick}>Subscribe</Button>
+              <Button variant="contained" onClick={handleClick}>
+                Subscribe
+              </Button>
             </CardContent>
           </Card>
         </Grid>
@@ -60,9 +84,5 @@ export default function HomePage() {
 }
 
 HomePage.getLayout = function getLayout(page) {
-  return (
-    <Headerless>
-      {page}
-    </Headerless>
-  )
-}
+  return <Headerless>{page}</Headerless>;
+};
