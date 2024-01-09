@@ -35,7 +35,7 @@ const AppPage = ({ Component, pageProps }) => {
     return () => {
       router.events.off("routeChangeComplete", handleRouteChange);
     };
-  }, []);
+  }, [router.events]);
 
   return (
     <PostHogProvider client={posthog}>
