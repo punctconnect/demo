@@ -69,14 +69,26 @@ export default function HomePage() {
               <Typography variant="h6" component="h2" gutterBottom>
                 Subscribe to our newsletter
               </Typography>
+              
               <Typography color="textSecondary" paragraph>
                 Stay up to date with the latest deals and coupons.
               </Typography>
+              
+              <Typography color="textSecondary" style={{ marginTop: "20px",  marginBottom: "20px", fontStyle: "italic" }}>
+                By subscribing and using our product, you agree to our{" "}
+                <a href="/privacy">Privacy Policy</a>.
+              </Typography>
+
               <Button variant="contained" onClick={handleClick}>
                 Subscribe
               </Button>
+
             </CardContent>
           </Card>
+
+          <br />
+
+
         </Grid>
       </Grid>
     </Container>
