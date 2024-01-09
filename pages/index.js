@@ -8,6 +8,7 @@ import {
 } from "@material-ui/core";
 import { useRouter } from "next/router";
 import { usePostHog } from "posthog-js/react";
+import Link from "next/link";
 import React from "react";
 import Headerless from "../layouts/headerless";
 
@@ -76,7 +77,7 @@ export default function HomePage() {
               
               <Typography color="textSecondary" style={{ marginTop: "20px",  marginBottom: "20px", fontStyle: "italic" }}>
                 By subscribing and using our product, you agree to our{" "}
-                <a href="/privacy">Privacy Policy</a>.
+                <Link href="/privacy">Privacy Policy </Link> and{" "}
               </Typography>
 
               <Button variant="contained" onClick={handleClick}>
