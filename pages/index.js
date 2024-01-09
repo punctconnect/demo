@@ -83,6 +83,7 @@ export default function HomePage() {
               <Button variant="contained" onClick={handleClick}>
                 Subscribe
               </Button>
+              
             </CardContent>
           </Card>
 
