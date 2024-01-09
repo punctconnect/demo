@@ -77,7 +77,7 @@ export default function HomePage() {
               
               <Typography color="textSecondary" style={{ marginTop: "20px",  marginBottom: "20px", fontStyle: "italic" }}>
                 By subscribing and using our product, you agree to our{" "}
-                <Link href="/privacy">Privacy Policy </Link> and{" "}
+                <Link href="/privacy">Privacy Policy </Link>
               </Typography>
 
               <Button variant="contained" onClick={handleClick}>
