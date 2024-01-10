@@ -22,6 +22,7 @@ export default function HomePage() {
 
   const handleExploreDealsClick = () => {
     posthog.capture("click-explore-deals-btn");
+    router.push("https://acs-punctconnect.vercel.app/app");
   };
 
   return (
